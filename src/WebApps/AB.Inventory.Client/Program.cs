@@ -2,6 +2,7 @@ using AB.Inventory.Application;
 using AB.Inventory.Client;
 using AB.Inventory.Core.Authentication;
 using AB.Inventory.Core.Models;
+using AB.Inventory.Infrastructure;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
@@ -19,8 +20,8 @@ builder.Configuration.GetSection("ABConfig").Bind(config, c => c.BindNonPublicPr
 builder.Services.AddSingleton(config);
 
 builder.Services
-    //.AddInfrastructureLayer()
     .AddApplicationLayer()
+    .AddInfrastructureLayer(builder.Configuration)
     .AddMudServices(configuration =>
     {
         configuration.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;

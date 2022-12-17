@@ -40,8 +40,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\EPA.Application\AB.Inventory.Application.csproj" />
+	  <ProjectReference Include="..\..\AB.Inventory.Core\AB.Inventory.Core.csproj" />
+	  <ProjectReference Include="..\..\AB.Inventory.Infrastructure\AB.Inventory.Infrastructure.csproj" />
 	</ItemGroup>
-	
 	
 </Project>

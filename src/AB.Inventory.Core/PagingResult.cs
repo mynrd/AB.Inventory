@@ -1,12 +1,20 @@
-﻿namespace AB.Inventory.Application.Wrapper
+﻿namespace AB.Inventory.Core
 {
-    public class SearchResultDto<TModel>
+    public class PagingResult<TModel>
     {
-        public SearchResultDto() : this(0, 0, 0, new List<TModel>())
+        private int _totalCount;
+        private int _page;
+        private int _pageSize;
+
+        public PagingResult() : this(0, 0, 0, new List<TModel>())
         {
         }
 
-        public SearchResultDto(int totalItems, int index, int limit, List<TModel> items)
+        public PagingResult(int totalCount, int page, int pageSize) : this(totalCount, page, pageSize, new List<TModel>())
+        {
+        }
+
+        public PagingResult(int totalItems, int index, int limit, List<TModel> items)
         {
             TotalItems = totalItems;
             Index = index;
@@ -29,14 +37,14 @@
         public List<TModel> Items { get; set; }
         public Guid? SessionKey { get; set; }
 
-        public SearchResultDto<TNewModel> ConvertTo<TNewModel>(Func<TModel, TNewModel> selector)
+        public PagingResult<TNewModel> ConvertTo<TNewModel>(Func<TModel, TNewModel> selector)
         {
             if (selector is null)
             {
                 throw new ArgumentNullException(nameof(selector));
             }
 
-            return new SearchResultDto<TNewModel>()
+            return new PagingResult<TNewModel>()
             {
                 Index = Index,
                 Items = Items.Select(selector).ToList(),

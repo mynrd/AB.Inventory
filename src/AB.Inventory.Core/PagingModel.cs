@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AB.Inventory.Application.Wrapper
+namespace AB.Inventory.Core
 {
     public class PagingModel
     {

@@ -1,9 +1,10 @@
-﻿using AB.Inventory.Domain.Entities;
+﻿using AB.Inventory.Application.Interfaces;
+using AB.Inventory.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AB.Inventory.Infrastructure
 {
-    public class ABInventoryContext : DbContext
+    public class ABInventoryContext : DbContext, IABInventoryContext
     {
         public ABInventoryContext(DbContextOptions<ABInventoryContext> options) : base(options)
         {
@@ -23,6 +24,16 @@ namespace AB.Inventory.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }
