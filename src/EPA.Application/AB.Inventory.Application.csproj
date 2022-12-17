@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="NewFolder\" />
-    <Folder Include="Wrapper\" />
   </ItemGroup>
 
 </Project>
